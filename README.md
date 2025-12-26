@@ -1,16 +1,46 @@
-# book_app
+# Simple Book Explorer
 
-A new Flutter project.
+Simple mobile app built with Flutter to display a list of books from a public API.
+This project was created as part of a Mobile Engineer technical test.
 
-## Getting Started
+## Features
+- Show list of books with cover image
+- Book detail page
+- Fetch data from public API
+- Handle cellular data offline / network error safely
+- Retry when network is available again
 
-This project is a starting point for a Flutter application.
+## Tech Stack
+- Flutter
+- Riverpod (state management)
+- Dio (networking)
+- GoRouter (navigation)
+- CachedNetworkImage
 
-A few resources to get you started if this is your first Flutter project:
+## Architecture
+The project uses a simple MVVM-style structure:
+- UI layer handles rendering only
+- ViewModel handles state and logic
+- Repository handles data source and error handling
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This keeps the UI clean and easy to maintain.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## API
+Data source:
+https://openlibrary.org/subjects/love.json?limit=10
+
+Fields used:
+- title
+- author
+- cover_id
+
+## Offline Handling
+If the device has no internet connection:
+- The app will not crash
+- An error message is shown
+- User can retry once the network is back
+
+## How to Run
+```bash
+flutter pub get
+flutter run
